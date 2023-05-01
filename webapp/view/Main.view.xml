@@ -1,0 +1,170 @@
+<mvc:View controllerName="nt.zprojectodatae0403.controller.Main"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.uxap"
+	xmlns:core="sap.ui.core"
+	xmlns:m="sap.m"
+	xmlns:l="sap.ui.layout"
+	height="100%">
+	<ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false" useIconTabBar="true">
+		<headerTitle>
+			<ObjectPageHeader objectTitle="Section sample">
+				<actions>
+					<ObjectPageHeaderActionButton 
+						icon="sap-icon://search"
+						text="Search"
+						hideText="false"
+						press="onSearch"
+						type="Emphasized"
+					/>
+				</actions>
+			</ObjectPageHeader>
+		</headerTitle>
+
+		<headerContent>
+			<m:ObjectAttribute title=""/>
+			<l:Grid containerQuery="true" defaultSpan="XL2 L4 M6 S12"/>
+				<m:VBox >
+					<m:Label text="OrderID"/>
+					<m:Input id="idOrderID"/>
+					<!-- <m:Input type="Number" valueState="Error" valueStateText="Error Message!!!"/> -->
+				</m:VBox>
+				<m:VBox >
+					<m:Label text="Order Date"/>
+					<m:DatePicker 
+						id="idOrderDate"
+						displayFormat="yyyy-MM-dd"
+						valueFormat="yyyyMMdd"/> <!-- valueFormat 형태로 값을 불러올 수 있다-->
+				</m:VBox>
+				<m:VBox >
+					<m:Label text="label3"/>
+					<m:Input type="Number"/>
+				</m:VBox>
+				<m:VBox >
+					<m:Label text="label4"/>
+					<m:Input type="Number"/>
+				</m:VBox>
+		</headerContent>
+
+		<sections>
+			<ObjectPageSection titleUppercase="false" title="Section 3">
+				<subSections>
+					<ObjectPageSubSection titleUppercase="false">
+						<blocks>
+							<m:Table id="idProductsTable"
+								inset="false"
+								items="{/Orders}">
+								<!-- <m:Table items="{
+                    path : '/Products',
+                    filters : [{
+                        path : 'UnitsOnOrder',
+                        operator : 'NE',
+                        value1 : '0'
+                    },{
+                        path : 'ProductName',
+                        operator : 'Contains',
+                                        value1 : 'C'
+                                    }],
+                                    sorter : [{
+                                        path : 'UnitsInStock',
+                                        descending : true
+                                    },{
+										path : 'UnitsOnOrder',
+                                        descending : false
+									}]
+                                }"> -->
+								<m:headerToolbar>
+									<m:OverflowToolbar>
+										<m:content>
+											<m:Title text="Products" level="H2" />
+											<m:ToolbarSpacer />
+										</m:content>
+									</m:OverflowToolbar>
+								</m:headerToolbar>
+								<m:columns>
+									<!-- <m:Column>
+						<m:Text text="Product" />
+					</m:Column>
+					<m:Column>
+						<m:Text text="UnitsInStock" />
+					</m:Column>
+					<m:Column>
+						<m:Text text="UnitsOnOrder" />
+					</m:Column> -->
+									<m:Column>
+										<m:Text text="Order ID" />
+									</m:Column>
+									<m:Column>
+										<m:Text text="Customer ID" />
+									</m:Column>
+									<m:Column>
+										<m:Text text="OrderDate" />
+									</m:Column>
+									<m:Column>
+										<m:Text text="RequiredDate" />
+									</m:Column>
+									<m:Column>
+										<m:Text text="ShippedDate" />
+									</m:Column>
+									<!-- <m:Column>
+						<m:Text text="Custom Sum" />
+					</m:Column>
+					<m:Column>
+						<m:Text text="Result" />
+					</m:Column> -->
+								</m:columns>
+								<m:items>
+									<m:ColumnListItem vAlign="Middle">
+										<m:cells>
+										<!-- <m:ObjectIdentifier title="{ProductName}" /> -->
+                                        <!-- <m:Text text="{UnitsInStock}" /> -->
+                                        <!-- <m:Text text="{UnitsOnOrder}" /> -->
+											<!-- <m:Text text="{UnitsInStock} and {UnitsOnOrder}"/> -->
+											<!-- <m:Text    text="{
+                                            parts : [
+                                            {path : 'UnitsInStock'},
+                                            {path : 'UnitsOnOrder'}
+                                            ],
+											formatter: '.formatter.onSum'
+                                        }" /> -->
+											<!-- <core:Icon src="sap-icon://circle-task-2"
+											color="{=(${UnitsInStock} + ${UnitsOnOrder}) &lt; 50 ?
+											'rgb(29,219,22)' : 'rgb(255,0,0)' }"/> -->
+											<!-- <m:Text text="{=${UnitsInStock} + ${UnitsOnOrder}}" 
+                                                visible="{=(${UnitsInStock} + ${UnitsOnOrder}) &lt; 50 ? false : true }"/> -->
+											<m:ObjectIdentifier text="{OrderID}" />
+											<m:Text text="{CustomerID}" />
+											<m:Text
+												text="{
+													path:'OrderDate',
+													formatter:'.formatter.dateTime'
+												}" />
+											<m:Text
+												text="{
+													path:'RequiredDate',
+													formatter:'.formatter.dateTime'
+													}" />
+											<m:Text
+												text="{
+													path: 'ShippedDate',
+													formatter:'.formatter.dateTime'
+													}" />
+										</m:cells>
+									</m:ColumnListItem>
+								</m:items>
+							</m:Table>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection titleUppercase="false" title ="Section 4">
+			<subSections>
+					<ObjectPageSubSection titleUppercase="false">
+						<blocks>
+							<m:Text  text="Dd"></m:Text>
+						</blocks>
+					</ObjectPageSubSection>
+			</subSections>
+			</ObjectPageSection>
+		</sections>
+	</ObjectPageLayout>
+</mvc:View>
